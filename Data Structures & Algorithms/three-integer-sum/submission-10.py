@@ -1,0 +1,28 @@
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        sol = []
+        nums.sort()
+        print(nums)
+        for i in range(len(nums)-2):
+            if i > 0 and nums[i] == nums[i-1]:
+                continue
+            l = i + 1
+            r = len(nums) - 1
+            print(i)
+            while l < r:
+                sum = nums[l] + nums[r] + nums[i]
+                if sum == 0:
+                    sol.append([nums[i],nums[l],nums[r]])
+                    while l<r and nums[l+1] == nums[l]:
+                        l += 1 
+                    while l<r and nums[r-1] == nums[r]:
+                        r -= 1 
+                elif sum < 0:
+                    while l<r and nums[l+1] == nums[l]:
+                        l += 1 
+                else:
+                    while l<r and nums[r-1] == nums[r]:
+                        r -= 1 
+        return sol
+
+            
